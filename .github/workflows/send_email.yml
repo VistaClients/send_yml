@@ -18,11 +18,11 @@ jobs:
                     secure: true
                     username: "amandange7676@gmail.com"
                     password: "dock bpmc qeqk zyhd"
-                    subject: "${ github.event.client_payload.subject }"
-                    to: ${ github.event.client_payload.to_email }
+                    subject: ${{ github.event.client_payload.subject }}
+                    to: ${{ github.event.client_payload.to_email }}
                     from: "amandange7676@gmail.com"
                     body: |
-                        ${ github.event.client_payload.body }
+                        ${{ github.event.client_payload.body }}
 
               - name: Send Email to Admin
                 uses: dawidd6/action-send-mail@v3
@@ -32,11 +32,11 @@ jobs:
                     secure: true
                     username: "amandange7676@gmail.com"
                     password: "dock bpmc qeqk zyhd"
-                    subject: "${ github.event.client_payload.subject }"
+                    subject: ${{ github.event.client_payload.subject }}
                     to: fashionsense482@gmail.com
                     from: "amandange7676@gmail.com"
                     body: |
-                        ${ github.event.client_payload.to_email }
+                        ${{ github.event.client_payload.to_email }}
                         Message:
-                        ${ github.event.client_payload.body }
+                        ${{ github.event.client_payload.body }}
                 
