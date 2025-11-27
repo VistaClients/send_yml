@@ -10,7 +10,7 @@ jobs:
         runs-on: ubuntu-latest
 
         steps:
-            - name: Send Email to User
+              - name: Send Email to User
                 uses: dawidd6/action-send-mail@v3
                 with:
                     server_address: "smtp.gmail.com"
@@ -24,7 +24,7 @@ jobs:
                     body: |
                         ${ github.event.client_payload.body }
 
-            - name: Send Email to Admin
+              - name: Send Email to Admin
                 uses: dawidd6/action-send-mail@v3
                 with:
                     server_address: "smtp.gmail.com"
