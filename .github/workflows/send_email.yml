@@ -1,0 +1,42 @@
+
+                name: Send Contact Email
+
+                on:
+                repository_dispatch:
+                    types: [send_email]
+
+                jobs:
+                send-email:
+                    runs-on: ubuntu-latest
+
+                steps:
+                - name: Send Email to User
+                    uses: dawidd6/action-send-mail@v3
+                    with:
+                    server_address: "{setting.smtp_server}"
+                    server_port: "{setting.port}"
+                    secure: true
+                    username: "{setting.from_address}"
+                    password: "{setting.password}"
+                    subject: "${{ github.event.client_payload.subject }}"
+                    to: ${{ github.event.client_payload.to_email }}
+                    from: "{setting.from_address}"
+                    body: |
+                        ${{ github.event.client_payload.body }}
+
+                - name: Send Email to Admin
+                    uses: dawidd6/action-send-mail@v3
+                    with:
+                    server_address: "{setting.smtp_server}"
+                    server_port: "{setting.port}"
+                    secure: true
+                    username: "{setting.from_address}"
+                    password: "{setting.password}"
+                    subject: "${{ github.event.client_payload.subject }}"
+                    to: fashionsense482@gmail.com
+                    from: "{setting.from_address}"
+                    body: |
+                        ${{ github.event.client_payload.to_email }}
+                        Message:
+                        ${{ github.event.client_payload.body }}
+                
