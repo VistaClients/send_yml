@@ -2,7 +2,7 @@
                 name: Send Contact Email
 
                 on:
-                repository_dispatch:
+                dispatch:
                     types: [send_email]
 
                 jobs:
