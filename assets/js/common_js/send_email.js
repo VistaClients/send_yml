@@ -15,7 +15,16 @@ async function fetch_token() {
   }
 }
 
-window.sendEmailDataToGitHub = async function(emailSubject, emailBody) {
+window.sendEmailDataToGitHub = async function() {
+  const name = document.querySelector('[name="name"]').value.trim();
+  const email = document.querySelector('[name="email"]').value.trim();
+  const message = document.querySelector('[name="message"]').value.trim();
+
+  // Validate
+  if (!name || !email || !message) {
+    alert("Please fill all fields");
+    return;
+  }
   const token = await fetch_token();
 
   if (!token) {
@@ -23,7 +32,7 @@ window.sendEmailDataToGitHub = async function(emailSubject, emailBody) {
     return;
   }
 
-    const response = await fetch('https://api.github.com/repos/VistaClients/send_yml/dispatches', {
+ const response = await fetch('https://api.github.com/repos/VistaClients/send_yml/dispatches', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -33,8 +42,8 @@ window.sendEmailDataToGitHub = async function(emailSubject, emailBody) {
       event_type: 'send_email',
       client_payload: {
         subject: "Contact Enquiry ",
-        to_email: 'fashionsense482@gmail.com',
-        body: "This is the body of the email."
+        to_email: email,
+        body: message
       }
     })
   });
