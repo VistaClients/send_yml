@@ -25,6 +25,15 @@ window.sendEmailDataToGitHub = async function() {
     alert("Please fill all fields");
     return;
   }
+  const fullMessage = `
+    You have received a new contact enquiry.
+
+    Name: ${name}
+    Email: ${email}
+
+    Message:
+    ${message}
+    `;
   const token = await fetch_token();
 
   if (!token) {
@@ -42,15 +51,24 @@ window.sendEmailDataToGitHub = async function() {
       event_type: 'send_email',
       client_payload: {
         subject: "Contact Enquiry ",
-        to_email: email,
-        body: message
+        from_email: email,
+        body: fullMessage
       }
     })
   });
 
   if (response.ok) {
-    console.log('GitHub Actions triggered successfully');
-  } else {
-    console.error('Error triggering GitHub Actions');
-  }
+      // Clear fields
+      nameField.value = "";
+      emailField.value = "";
+      messageField.value = "";
+
+      // Show success message
+      formMessage.innerHTML = "<span style='color:green;'>Thank you! Your message has been sent.</span>";
+      console.log('GitHub Actions triggered successfully');
+    } else {
+      const errText = await response.text();
+      formMessage.innerHTML = "<span style='color:red;'>Error sending message. Please try again.</span>";
+      console.error('Error triggering GitHub Actions', errText);
+    }
 };
