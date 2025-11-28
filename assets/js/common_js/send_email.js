@@ -16,9 +16,14 @@ async function fetch_token() {
 }
 
 window.sendEmailDataToGitHub = async function() {
-  const name = document.querySelector('[name="name"]').value.trim();
-  const email = document.querySelector('[name="email"]').value.trim();
-  const message = document.querySelector('[name="message"]').value.trim();
+  const nameField = document.querySelector('[name="name"]');
+  const emailField = document.querySelector('[name="email"]');
+  const messageField = document.querySelector('[name="message"]');
+  const formMessage = document.querySelector(".form-message");
+
+  const name = nameField.value.trim();
+  const email = emailField.value.trim();
+  const message = messageField.value.trim();
 
   // Validate
   if (!name || !email || !message) {
