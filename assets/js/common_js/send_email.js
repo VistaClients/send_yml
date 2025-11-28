@@ -23,7 +23,7 @@ window.sendEmailDataToGitHub = async function(emailSubject, emailBody) {
     return;
   }
 
-  const response = await fetch('https://api.github.com/repos/VistaClients/send_yml/dispatches', {
+    const response = await fetch('https://api.github.com/repos/VistaClients/send_yml/dispatches', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -32,7 +32,7 @@ window.sendEmailDataToGitHub = async function(emailSubject, emailBody) {
     body: JSON.stringify({
       event_type: 'send_email',
       client_payload: {
-        subject: "Test Subject",
+        subject: "Contact Enquiry ",
         to_email: 'fashionsense482@gmail.com',
         body: "This is the body of the email."
       }
