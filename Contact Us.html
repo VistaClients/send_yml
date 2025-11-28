@@ -38,15 +38,46 @@
             <div id="mainPageContent">
         
     <div id="middle_section_default">
-    <article class="container text-info-block">
-        <div class="row">
-            <div class="col-xs-12" style="text-align: center;">
-                <h2>Please add middle section</h2><br>
-               <button class="custombtn" onclick="sendEmailDataToGitHub()">Add Sections</button>
+         <div class="contact-wrapper mb-50" data-aos="fade-left" data-aos-duration="1400">
+                                    <h3>Send Message Us</h3>
+                                    <p>Your email address will not be published. Required fields are marked *</p>
+                                    <form id="contact-form" class="contact-form"  method="POST">
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <input type="text" class="form_control" placeholder="Name"
+                                                        name="name" >
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <input type="email" class="form_control" placeholder="Email"
+                                                        name="email" >
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <div class="form-group">
+                                                    <textarea class="form_control" placeholder="Message" name="message"
+                                                        rows="5" cols="8"></textarea>
+                                                </div>
+                                            </div>
 
-            </div>
-        </div>
-    </article>
+                                            <div class="col-lg-12">
+                                                <div class="form-group">
+                                            
+                                                <button type="button" class="theme-btn style-one" onclick="sendEmailDataToGitHub()">
+																		Send Message Us <i
+                                                            class="far fa-angle-double-right"></i></button>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <div class="form-group">
+                                                    <p class="form-message"></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
 		<button class="custombtn" onclick="sendEmailDataToGitHub()">Add Sections</button>
 </div>
 </div>
@@ -105,5 +136,6 @@
         </html>
 
     
+
 
 
